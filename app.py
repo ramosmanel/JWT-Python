@@ -3,9 +3,12 @@ import jwt
 from datetime import datetime, timedelta, timezone
 from functools import wraps
 import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
+load_dotenv()
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+print(os.getenv('SECRET_KEY'))
 
 def token_required(func):
     @wraps(func)
