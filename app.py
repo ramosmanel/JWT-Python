@@ -29,6 +29,7 @@ def token_required(func):
         return func(*args, **kwargs)
     return decorated
 
+#Home
 @app.route('/')
 def home():
     if not session.get('logged_in'):
@@ -36,6 +37,18 @@ def home():
     else:
         return 'Logged in currently!'
 
+#Publi
+@app.route('/public')
+def public():
+    return 'For Public'
+
+#Authenticated
+@app.route('/auth')
+@token_required
+def auth():
+    return 'JWT is verified. Welcome to your dashboard!'
+
+#Login
 @app.route('/login', methods=['POST'])
 def login():
     if request.form['username'] and request.form['password'] == 'MyPassword123':
