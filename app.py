@@ -1,5 +1,3 @@
-from crypt import methods
-
 from flask import Flask, request, jsonify, make_response, render_template, session
 import jwt
 from datetime import datetime, timedelta, timezone
